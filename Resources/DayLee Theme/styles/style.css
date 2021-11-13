@@ -32,7 +32,35 @@
     border-color: #C1BFFA;
 }
 
+.thead-purple {
+    background-color: #C1BFFA;
+    color: #1D1D1D;
+}
+
+.moods {
+    color : #C1BFFA;
+}
+
+.img-thumbnail {
+    border-radius: 50%;
+    width: fit-content;
+    height: fit-content;
+}
+
+table a {
+    text-decoration: none;
+    color: #1D1D1D;
+}
+
+table a:hover {
+    text-decoration: underline;
+    color:#C1BFFA;
+}
 body {
     font-family: 'Barlow', sans-serif;
     color: #1D1D1D;
+}
+
+tbody a {
+    font-size: 1.2rem;
 }
