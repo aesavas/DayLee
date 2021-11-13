@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'); /* Logo Font */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400&display=swap'); /* Normal Font */
+
+.logo-font{
+    font-family: 'Indie Flower', cursive;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.navbar {
+    background-color: #F9E450;
+    color : #FFFFFF;
+    font-weight: 600;
+}
+
+.btn-login {
+    background-color: #C1BFFA;
+    font-weight: 500;
+}
+
+.btn-outline-info{
+    border-color: #C1BFFA;
+    color: #C1BFFA;
+}
+
+.btn-outline-info:hover{
+    background-color: #C1BFFA;
+    border-color: #C1BFFA;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+}
