@@ -18,6 +18,10 @@
     font-weight: 500;
 }
 
+.btn-successful{
+    background-color: #7EE7D6;
+}
+
 .btn-outline-info{
     border-color: #C1BFFA;
     color: #C1BFFA;
@@ -30,4 +34,5 @@
 
 body {
     font-family: 'Barlow', sans-serif;
+    color: #1D1D1D;
 }
