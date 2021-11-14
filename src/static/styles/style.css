@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'); /* Logo Font */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400&display=swap'); /* Normal Font */
+
+.logo-font{
+    font-family: 'Indie Flower', cursive;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.navbar {
+    background-color: #F9E450;
+    color : #FFFFFF;
+    font-weight: 600;
+}
+
+.btn-login {
+    background-color: #C1BFFA;
+    font-weight: 500;
+}
+
+.btn-successful{
+    background-color: #7EE7D6;
+}
+
+.btn-outline-info{
+    border-color: #C1BFFA;
+    color: #C1BFFA;
+}
+
+.btn-outline-info:hover{
+    background-color: #C1BFFA;
+    border-color: #C1BFFA;
+}
+
+.thead-purple {
+    background-color: #C1BFFA;
+    color: #1D1D1D;
+}
+
+.moods {
+    color : #C1BFFA;
+}
+
+.img-thumbnail {
+    border-radius: 50%;
+    width: fit-content;
+    height: fit-content;
+}
+
+table a {
+    text-decoration: none;
+    color: #1D1D1D;
+}
+
+table a:hover {
+    text-decoration: underline;
+    color:#C1BFFA;
+}
+
+.edit-button {
+    color: #ADB5BD;
+}
+
+.edit-button:hover {
+    text-decoration: none;
+    color:#C1BFFA;
+}
+
+.delete-button {
+    color: #ADB5BD;
+}
+
+.delete-button:hover {
+    text-decoration: none;
+    color:#d90429;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    color: #1D1D1D;
+}
+
+/* tbody a {
+    font-size: 1.2rem;
+} */

@@ -1,1 +1,28 @@
-<h1>Hello World</h1>
+{% extends 'includes/main.html' %}
+{% block title %}Homepage{% endblock title %}
+{% block content %}
+<!-- Main Section -->
+<main>
+    <section class="p-5 p-lg-2" id='showcase' >
+        <div class="container pt-5">
+            <div class="row align-items-center justify-content-between pt-5">
+                <div class="col-md">
+                    <img src="images/showcase-diary.svg" alt="Showcase Diary" class="img-fluid d-sm-block d-none">
+                </div>
+                <div class="col-md p-5">
+                    <h2>DayLee</h2>
+                    <p class="lead pt-3">
+                        DayLee keeps your journals safe with double password protection.
+                    </p>
+                    <p>As soon as content created by you is saved, it is directly encrypted on your computer, i.e. even before its leaves your device and is transferred to the server via the Internet. With this end-to-end encryption approach DayLee set themselves apart from other competitors who do not encrypt user data at all or only provide server-side encryption. The decryption key for DayLee is your password, which you must enter each time you log on.
+                    <hr>
+                    So DayLee is safe place for your personal topics.<br>
+                    Ready to start writing? Sign up now!
+                    </p>
+                    <a href="" class="btn btn-outline-info">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

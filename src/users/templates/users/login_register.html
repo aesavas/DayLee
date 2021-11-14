@@ -1,14 +1,62 @@
+{% extends 'includes/main.html' %}
+{% load static %}
+{% block title %}{% if page == 'register' %}Register{% else %}Login{% endif %}{% endblock title %}
+{% block content %}
 {% if page == 'register' %}
-<form action="" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+<!-- Main Section -->
+<main>
+    <section class="container">
+        <div class="row align-items-center justify-content-center pt-5">
+            <div class="col-6">
+                <div class="card">
+                    <h5 class="card-header">Create An Account</h5>
+                    <div class="card-body">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">{{field.label}}</label>
+                                {{field}}
+                            </div>
+                            {% endfor %}
+                            <br>
+                            <input type="submit" class="form-control btn btn-successful" value="Register">
+                        </form>
+                        <p class="text-center pt-4">
+                            <small>Do you have an account? <a href="">Login</a></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
 {% else %}
-<form action="" method="post">
-    {% csrf_token %}
-    <input type="text" name="username" id="username" placeholder="Username">
-    <input type="password" name="password" id="password" placeholder="Password">
-    <input type="submit" value="Login">
-</form>
+<!-- Main Section -->
+<main>
+    <section class="container">
+        <div class="row align-items-center justify-content-center pt-5">
+            <div class="col-6">
+                <div class="card">
+                    <h5 class="card-header">Login</h5>
+                    <div class="card-body">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="text" class="form-control" name="username" placeholder="Username">
+                            <br>
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                            <br>
+                            <input type="submit" class="form-control btn btn-successful" value="Login">
+                        </form>
+                        <p class="text-center pt-4">
+                            <small><a href="">Register</a> or <a href="">Forgot your password?</a></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 {% endif %}
+{% endblock content %}
