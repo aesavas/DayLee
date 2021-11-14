@@ -17,7 +17,7 @@ def register_profile_view(request):
             user.username = user.username.lower()
             user.save()
             messages.success(request, 'User account was created successfully!')
-            return redirect('dashboard')
+            return redirect('login')
         else:
             messages.error(request, 'An error has occurred during registration!')
     context = {

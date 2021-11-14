@@ -1,0 +1,30 @@
+{% extends 'includes/main.html' %}
+{% block title %}New Diary{% endblock title %}
+{% block content %}
+<!-- Main Section -->
+<main>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-8 mt-5 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{% url 'dashboard' %}"><i class="fas fa-chevron-circle-left fa-3x moods"></i></a>
+                        <br>
+                        <form action="" method="post" class="mt-3">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <!-- Simple input -->
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">{{field.label}}</label>
+                                {{field}}
+                            </div>
+                            {% endfor %}
+                            <input type="submit" value="Submit" class="btn btn-outline-info form-control">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
