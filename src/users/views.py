@@ -2,10 +2,22 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 
+from .utils import create_encrypted_password
 from .forms import CustomUserCreationForm
 from .models import User, Profile
 
 
+def create_master_password_view(request):
+    # TODO: Create decorator for this. If do not have master password cannot create diary
+    profile = request.user.profile
+    if request.method == "POST":
+        master_password = create_encrypted_password(request.POST["password"])
+        profile.master_password = master_password
+        profile.new_user = False
+        profile.save()
+        messages.success(request, 'Your master password added successfully!')
+        return redirect('dashboard')
+    return render(request, 'users/create_master_password.html')
 
 def register_profile_view(request):
     form = CustomUserCreationForm()
@@ -46,6 +58,8 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'User has been login successfully!')
+            if user.profile.new_user:
+                return redirect('create-master-password')
             return redirect('dashboard')
         else:
             messages.error(request, 'Username or password is incorrect !')

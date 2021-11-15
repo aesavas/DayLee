@@ -9,7 +9,8 @@ def createProfile(sender, instance, created, **kwargs):
             user = user,
             username = user.username,
             name = user.first_name,
-            email = user.email
+            email = user.email,
+            new_user = True
         )
 
 

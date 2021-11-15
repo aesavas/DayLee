@@ -23,7 +23,7 @@
                             <input type="submit" class="form-control btn btn-successful" value="Register">
                         </form>
                         <p class="text-center pt-4">
-                            <small>Do you have an account? <a href="">Login</a></small>
+                            <small>Do you have an account? <a href="{% url 'login' %}">Login</a></small>
                         </p>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                             <input type="submit" class="form-control btn btn-successful" value="Login">
                         </form>
                         <p class="text-center pt-4">
-                            <small><a href="">Register</a> or <a href="">Forgot your password?</a></small>
+                            <small><a href="{% url 'register' %}">Register</a> or <a href="">Forgot your password?</a></small>
                         </p>
                     </div>
                 </div>
