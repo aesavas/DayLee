@@ -10,7 +10,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=200, blank=True, null=True, unique=True,)
     username = models.CharField(max_length=200, blank=True, null=True)
     profile_image = models.ImageField(blank=True, null=True, upload_to='profiles/', default='profiles/avatar.svg')
-    #secret_key = models.CharField(max_length=256, blank=True, null=True)
+    secret_key = models.BinaryField(max_length=256, blank=True, null=True)
     master_password = models.CharField(max_length=256, blank=True, null=True)
     new_user = models.BooleanField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)

@@ -43,8 +43,10 @@
                     <tbody>
                         {% for diary in diaries %}
                         <tr class="text-align-center">
-                            <td><a href="">{{diary.created|date:"d F Y, l, (f A)"}}</a></td>
+                            <td><a href="{% url 'detail-diary' diary.id %}">{{diary.created|date:"d F Y, l, (f A)"}}</a></td>
                             <td><i class="fas fa-smile fa-2x moods"></i></td>
+                            {% comment %} <td><a href="{% url 'check-master-password' %}?next={% url 'update-diary' diary.id %}"><i class="fas fa-edit fa-2x edit-button"></i></a></td>
+                            <td><a href="{% url 'check-master-password' %}?next={% url 'delete-diary' diary.id %}"><i class="fas fa-trash-alt fa-2x delete-button"></i></a></td> {% endcomment %}
                             <td><a href="{% url 'update-diary' diary.id %}"><i class="fas fa-edit fa-2x edit-button"></i></a></td>
                             <td><a href="{% url 'delete-diary' diary.id %}"><i class="fas fa-trash-alt fa-2x delete-button"></i></a></td>
                         </tr>

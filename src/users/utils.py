@@ -21,12 +21,3 @@ def create_secret_key():
     """
     return Fernet.generate_key()
 
-def encrypt_diary(request, diary):
-    f = Fernet(request.user.profile.secret_key)
-    enc_diary = f.encrypt(diary)
-    return enc_diary
-
-def decrypt_diary(request, enc_diary):
-    f = Fernet(request.user.profile.secret_key)
-    diary = f.decrypt(enc_diary)
-    return diary

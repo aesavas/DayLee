@@ -1,0 +1,38 @@
+{% extends 'includes/main.html' %}
+{% block title %}{{diary.created|date:"d F Y, l, (f A)"}}{% endblock title %}
+{% block content %}
+<!-- Main Section -->
+<main>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-10 mt-5 offset-md-1">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{% url 'dashboard' %}"><i class="fas fa-chevron-circle-left fa-3x moods"></i></a>
+                        <br>
+                        <div class="row justify-content-between mt-5">
+                            <div class="col-4 mx-3">
+                                MOOD : 
+                                {% if diary.mood == "happy" %}
+                                <i class="fas fa-smile moods"></i>
+                                {% elif diary.mood == "sad" %}
+                                <i class="fas fa-sad-tear moods"></i>
+                                {% elif diary.mood == "angry" %}
+                                <i class="fas fa-angry moods"></i>
+                                {% endif %}
+                            </div>
+                            <div class="col-5 mx-3 text-right">
+                                {{diary.created|date:"d F Y, l, (f A)"}}
+                            </div>
+                        </div>
+                        <div class="row mx-3 mt-5">
+                            <p>{{diary.diary}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}

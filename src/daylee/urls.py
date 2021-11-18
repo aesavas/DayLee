@@ -22,7 +22,7 @@ from diary.views import landing_page_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', landing_page_view, name='landing-page'),
-    path('diaries/', include('diary.urls')),
+    path('diaries/', include('diary.urls' )),
     path('', include('users.urls')),
 ]
 

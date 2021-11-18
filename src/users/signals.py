@@ -1,5 +1,6 @@
 from django.db.models.signals import post_delete, post_save
 from .models import User, Profile
+from .utils import create_secret_key
 
 #! when user created profile will be created automatically
 def createProfile(sender, instance, created, **kwargs):
@@ -10,7 +11,8 @@ def createProfile(sender, instance, created, **kwargs):
             username = user.username,
             name = user.first_name,
             email = user.email,
-            new_user = True
+            new_user = True,
+            secret_key = create_secret_key()
         )
 
 
