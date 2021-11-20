@@ -3,8 +3,28 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 
 from .utils import create_encrypted_password, check_master_password
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfileForm
 from .models import User, Profile
+
+def account_view(request):
+    profile = request.user.profile
+    context = {
+        'profile':profile,
+    }
+    return render(request, 'users/account.html', context)
+
+def edit_account_view(request):
+    profile = request.user.profile
+    form = ProfileForm(instance = profile)
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance = profile)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    context = {
+        'form' : form,
+    }
+    return render(request, 'users/edit_account.html', context)
 
 
 def create_master_password_view(request):

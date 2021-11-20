@@ -1,0 +1,29 @@
+{% extends 'includes/main.html' %}
+{% block title %}Account{% endblock title %}
+{% block content %}
+<!-- Main Section -->
+<main>
+    <section class="container">
+        <div class="row align-items-center justify-content-center pt-5">
+            <div class="col-6">
+                <div class="card">
+                    <h5 class="card-header">Edit Your Account</h5>
+                    <div class="card-body">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">{{field.label}}</label>
+                                {{field}}
+                            </div>
+                            {% endfor %}
+                            <br>
+                            <input type="submit" class="form-control btn btn-successful" value="Confirm">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
