@@ -8,12 +8,12 @@
             <div class="col-6">
                 <div class="card">
                     <h5 class="card-header text-center">{{profile.name}}</h5>
-                    <img src="{{profile.profile_image.url}}" class="img-thumbnail" alt="...">
+                    <div class="text-center py-3 px-5"><img src="{{profile.profile_image.url}}" alt="" class="img-thumbnail"></div>
                     <div class="card-body text-center">
                         <legend>Username : {{profile.username}}</legend>
                         <legend>Email : {{profile.email}}</legend>
                         <p class="text-center pt-4">
-                            <small><a href="{% url 'edit-account' %}">Edit</a> your profile or <a href="">change your master password.</a></small>
+                            <small><a href="{% url 'edit-account' %}">Edit</a> your profile or <a href="{% url 'edit-master-password' %}">change your master password.</a></small>
                         </p>
                     </div>
                 </div>

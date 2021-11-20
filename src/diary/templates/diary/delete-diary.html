@@ -8,7 +8,7 @@
             <div class="col-md-8 mt-5 offset-md-2">
                 <div class="card">
                     <div class="card-body">
-                        <p><p>Are you sure you want to delete "{{diary}}"?</p></p>
+                        <p>Are you sure you want to delete "{{diary.created|date:'d F Y, l, (f A)'}}"?</p>
                         <form action="" method="post" class="mt-3 form-inline">
                             {% csrf_token %}
                             <a href="{% url 'dashboard' %}" class="btn btn-secondary form-control mr-4">Go Back</a>

@@ -8,21 +8,21 @@
             <div class="col-md-10 mt-5 offset-md-1">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{% url 'dashboard' %}"><i class="fas fa-chevron-circle-left fa-3x moods"></i></a>
+                        <a href="{% url 'dashboard' %}"><i class="fas fa-chevron-circle-left fa-3x moods ml-3"></i></a>
                         <br>
                         <div class="row justify-content-between mt-5">
-                            <div class="col-4 mx-3">
-                                MOOD : 
+                            <div class="col-5 mx-3">
+                                <h3 style="display:inline">MOOD :</h3> 
                                 {% if diary.mood == "happy" %}
-                                <i class="fas fa-smile moods"></i>
+                                <i class="fas fa-smile fa-2x moods"></i>
                                 {% elif diary.mood == "sad" %}
-                                <i class="fas fa-sad-tear moods"></i>
+                                <i class="fas fa-sad-tear fa-2x moods"></i>
                                 {% elif diary.mood == "angry" %}
-                                <i class="fas fa-angry moods"></i>
+                                <i class="fas fa-angry fa-2x moods"></i>
                                 {% endif %}
                             </div>
                             <div class="col-5 mx-3 text-right">
-                                {{diary.created|date:"d F Y, l, (f A)"}}
+                                <h4>{{diary.created|date:"d F Y, l (f A)"}}</h4>
                             </div>
                         </div>
                         <div class="row mx-3 mt-5">

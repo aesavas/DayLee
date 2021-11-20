@@ -43,6 +43,21 @@ def create_master_password_view(request):
     }
     return render(request, 'users/create_or_check_master_password.html', context)
 
+
+def edit_master_password_view(request):
+    profile = request.user.profile
+    if request.method == "POST":
+        checked = check_master_password(request.POST['current-password'], profile.master_password)
+        if checked and request.POST['new-password'] == request.POST['new-password2']:
+            profile.master_password = request.POST['new-password']
+            profile.save()
+            messages.success(request, 'Your master password has been updated succesfully!')
+            return redirect('account')
+        else:
+            messages.error(request, 'You entered wrong password or new passwords does not match!')
+    return render(request, 'users/edit_master_password.html')
+
+
 # def check_master_password_view(request, pk):
 #     page = 'check'
 #     profile = request.user.profile
