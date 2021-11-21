@@ -18,12 +18,19 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from diary.views import landing_page_view
+from users.forms import UserPasswordResetForm, UserPasswordSetForm
+
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', landing_page_view, name='landing-page'),
     path('diaries/', include('diary.urls' )),
     path('', include('users.urls')),
+    path('reset_password/', PasswordResetView.as_view(template_name='reset_password.html', form_class=UserPasswordResetForm), name='reset_password'),
+    path('reset_password_sent/', PasswordResetDoneView.as_view(template_name='reset_password_sent.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='reset.html', form_class=UserPasswordSetForm), name='password_reset_confirm'),
+    path('reset_password_complete/', PasswordResetCompleteView.as_view(template_name='reset_password_complete.html'), name='password_reset_complete'),
 ]
 
 
