@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from users.models import Profile
@@ -11,8 +12,10 @@ from .utils import encrypt_diary, decrypt_diary
 def landing_page_view(request):
     return render(request, 'index.html')
 
-
+@login_required(login_url='login')
 def dashboard_view(request):
+    request.session['secret_key'] = request.user.profile.secret_key.decode()
+    print(request.session.keys())
     profile = request.user.profile
     diaries = profile.diary_set.all()
     moods = {
@@ -28,7 +31,7 @@ def dashboard_view(request):
     }
     return render(request, 'diary/dashboard.html', context)
 
-
+@login_required(login_url='login')
 def create_diary_view(request):
     form = DiaryCreationForm()
     if request.method == "POST":
@@ -45,6 +48,7 @@ def create_diary_view(request):
     }
     return render(request, 'diary/create_update_diary.html', context)
 
+@login_required(login_url='login')
 def update_diary_view(request, pk):
     profile = request.user.profile
     diary = profile.diary_set.get(id=pk)
@@ -62,6 +66,7 @@ def update_diary_view(request, pk):
     }
     return render(request, 'diary/create_update_diary.html', context)
 
+@login_required(login_url='login')
 def delete_diary_view(request, pk):
     profile = request.user.profile
     diary = profile.diary_set.get(id=pk)
@@ -74,7 +79,7 @@ def delete_diary_view(request, pk):
     }
     return render(request, 'diary/delete-diary.html', context)
 
-
+@login_required(login_url='login')
 def detail_diary_view(request, pk):
     profile = request.user.profile
     diary = profile.diary_set.get(id=pk)

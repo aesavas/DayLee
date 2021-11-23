@@ -1,11 +1,13 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import SESSION_KEY, login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .utils import create_encrypted_password, check_master_password
 from .forms import CustomUserCreationForm, ProfileForm
 from .models import User, Profile
 
+@login_required(login_url='login')
 def account_view(request):
     profile = request.user.profile
     context = {
@@ -13,6 +15,7 @@ def account_view(request):
     }
     return render(request, 'users/account.html', context)
 
+@login_required(login_url='login')
 def edit_account_view(request):
     profile = request.user.profile
     form = ProfileForm(instance = profile)
@@ -26,7 +29,7 @@ def edit_account_view(request):
     }
     return render(request, 'users/edit_account.html', context)
 
-
+@login_required(login_url='login')
 def create_master_password_view(request):
     page = "create"
     # TODO: Create decorator for this. If do not have master password cannot create diary
@@ -43,7 +46,7 @@ def create_master_password_view(request):
     }
     return render(request, 'users/create_or_check_master_password.html', context)
 
-
+@login_required(login_url='login')
 def edit_master_password_view(request):
     profile = request.user.profile
     if request.method == "POST":
