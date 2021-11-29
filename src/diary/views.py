@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from diary.decorators import master_password_required
 
 from users.models import Profile
 from users.utils import check_master_password
@@ -14,8 +15,6 @@ def landing_page_view(request):
 
 @login_required(login_url='login')
 def dashboard_view(request):
-    request.session['secret_key'] = request.user.profile.secret_key.decode()
-    print(request.session.keys())
     profile = request.user.profile
     diaries = profile.diary_set.all()
     moods = {
@@ -79,10 +78,13 @@ def delete_diary_view(request, pk):
     }
     return render(request, 'diary/delete-diary.html', context)
 
+
 @login_required(login_url='login')
+@master_password_required
 def detail_diary_view(request, pk):
     profile = request.user.profile
     diary = profile.diary_set.get(id=pk)
+    print(diary)
     diary.diary = decrypt_diary(request, diary.diary)
     context = {
         'diary': diary

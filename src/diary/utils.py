@@ -7,7 +7,6 @@ def encrypt_diary(request, diary):
     return enc_diary
 
 def decrypt_diary(request, enc_diary):
-    print(type(request.user.profile.secret_key))
     f = Fernet(request.user.profile.secret_key)
     diary = f.decrypt(enc_diary.encode()).decode()
     return diary

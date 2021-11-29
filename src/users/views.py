@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib.auth import SESSION_KEY, login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -61,19 +62,20 @@ def edit_master_password_view(request):
     return render(request, 'users/edit_master_password.html')
 
 
-# def check_master_password_view(request, pk):
-#     page = 'check'
-#     profile = request.user.profile
-#     if request.method == "POST":
-#         checked = check_master_password(request.POST['password'], profile.master_password)
-#         if checked:
-#             return redirect(request.path, pk)
-#         else:
-#             messages.error(request, 'You entered wrong password !')
-#     context = {
-#         'page':page,
-#     }
-#     return render(request, 'users/create_or_check_master_password.html', context)
+def check_master_password_view(request):
+    page = 'check'
+    profile = request.user.profile
+    if request.method == "POST":
+        checked = check_master_password(request.POST['password'], profile.master_password)
+        if checked:
+            request.session['master_password_provided'] = True
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'You entered wrong password !')
+    context = {
+        'page':page,
+    }
+    return render(request, 'users/create_or_check_master_password.html', context)
 
 def register_profile_view(request):
     form = CustomUserCreationForm()
@@ -114,6 +116,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'User has been login successfully!')
+            request.session['master_password_provided'] = False
             if user.profile.new_user:
                 return redirect('create-master-password')
             return redirect('dashboard')

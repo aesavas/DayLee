@@ -4,6 +4,11 @@
 <!-- Main Section -->
 <main>
     <section class="container">
+        {% if not request.session.master_password_provided %}
+        <div class="alert alert-warning mt-5" role="alert">
+            If you want to view, update or delete your diary. You have to <a href="{% url 'check-master-password' %}">enter</a> your master password!
+        </div>
+        {% endif %}
         <div class="row">
             <!-- Profile -->
             <div class="col-md-4">
@@ -13,7 +18,6 @@
                     </div>
                     <div class="card-body">
                         <div class="text-center pt-3 pb-5"><img src="{{profile.profile_image.url}}" alt="" class="img-thumbnail"></div>
-                        <!-- TODO: Profil resmi eklenebilir. -->
                         <p class="card-text mt-5">
                             <i class="fas fa-pen-square moods"></i><span class="ml-2">Total Diaries : {{moods.total}}</span>
                             <hr>
@@ -46,9 +50,15 @@
                         {% for diary in diaries %}
                         <tr class="text-align-center">
                             <td><a href="{% url 'detail-diary' diary.id %}">{{diary.created|date:"d F Y, l, (f A)"}}</a></td>
-                            <td><i class="fas fa-smile fa-2x moods"></i></td>
-                            {% comment %} <td><a href="{% url 'check-master-password' %}?next={% url 'update-diary' diary.id %}"><i class="fas fa-edit fa-2x edit-button"></i></a></td>
-                            <td><a href="{% url 'check-master-password' %}?next={% url 'delete-diary' diary.id %}"><i class="fas fa-trash-alt fa-2x delete-button"></i></a></td> {% endcomment %}
+                            <td>
+                                {% if diary.mood == "happy" %}
+                                <i class="fas fa-smile fa-2x moods"></i>
+                                {% elif diary.mood == "sad" %}
+                                <i class="fas fa-sad-tear fa-2x moods"></i>
+                                {% elif diary.mood == "angry" %}
+                                <i class="fas fa-angry fa-2x moods"></i>
+                                {% endif %}
+                            </td>
                             <td><a href="{% url 'update-diary' diary.id %}"><i class="fas fa-edit fa-2x edit-button"></i></a></td>
                             <td><a href="{% url 'delete-diary' diary.id %}"><i class="fas fa-trash-alt fa-2x delete-button"></i></a></td>
                         </tr>
