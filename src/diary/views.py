@@ -48,6 +48,7 @@ def create_diary_view(request):
     return render(request, 'diary/create_update_diary.html', context)
 
 @login_required(login_url='login')
+@master_password_required
 def update_diary_view(request, pk):
     profile = request.user.profile
     diary = profile.diary_set.get(id=pk)
@@ -66,6 +67,7 @@ def update_diary_view(request, pk):
     return render(request, 'diary/create_update_diary.html', context)
 
 @login_required(login_url='login')
+@master_password_required
 def delete_diary_view(request, pk):
     profile = request.user.profile
     diary = profile.diary_set.get(id=pk)
