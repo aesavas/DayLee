@@ -22,11 +22,11 @@
                                 {% endif %}
                             </div>
                             <div class="col-5 mx-3 text-right">
-                                <h4>{{diary.created|date:"d F Y, l (f A)"}}</h4>
+                                <h4>{{diary.created|date:"d M Y, l (f A)"}}</h4>
                             </div>
                         </div>
                         <div class="row mx-3 mt-5">
-                            <p>{{diary.diary}}</p>
+                            <p>{{diary.diary | linebreaks}}</p>
                         </div>
                     </div>
                 </div>
