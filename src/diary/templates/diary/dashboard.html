@@ -4,10 +4,12 @@
 <!-- Main Section -->
 <main>
     <section class="container">
-        {% if not request.session.master_password_provided %}
-        <div class="alert alert-warning mt-5" role="alert">
-            If you want to view, update or delete your diary. You have to <a href="{% url 'check-master-password' %}">enter</a> your master password!
-        </div>
+        {% if profile.master_password %}
+            {% if not request.session.master_password_provided %}
+            <div class="alert alert-warning mt-5" role="alert">
+                If you want to view, update or delete your diary. You have to <a href="{% url 'check-master-password' %}">enter</a> your master password!
+            </div>
+            {% endif %}
         {% endif %}
         <div class="row">
             <!-- Profile -->
