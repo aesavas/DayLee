@@ -1,12 +1,11 @@
-from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from django.contrib.auth import SESSION_KEY, login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .utils import create_encrypted_password, check_master_password
 from .forms import CustomUserCreationForm, ProfileForm
-from .models import User, Profile
+from .models import User
 
 @login_required(login_url='login')
 def account_view(request):

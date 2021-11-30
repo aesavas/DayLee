@@ -1,9 +1,5 @@
-from django.contrib import messages
-from django.urls import reverse
 from functools import wraps
-from django.shortcuts import redirect, render
-from users.utils import check_master_password
-from users.views import check_master_password_view
+from django.shortcuts import redirect
 
 
 

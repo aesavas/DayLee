@@ -3,10 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from diary.decorators import master_password_required
 
-from users.models import Profile
-from users.utils import check_master_password
-
-from .models import Diary
 from .forms import DiaryCreationForm
 from .utils import encrypt_diary, decrypt_diary
 

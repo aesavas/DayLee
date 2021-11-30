@@ -1,5 +1,4 @@
 from cryptography.fernet import Fernet
-import base64
 
 def encrypt_diary(request, diary):
     f = Fernet(request.user.profile.secret_key)
