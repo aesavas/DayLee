@@ -32,7 +32,6 @@ def edit_account_view(request):
 @login_required(login_url='login')
 def create_master_password_view(request):
     page = "create"
-    # TODO: Create decorator for this. If do not have master password cannot create diary
     profile = request.user.profile
     if request.method == "POST":
         master_password = create_encrypted_password(request.POST["password"])
@@ -101,8 +100,6 @@ def login_view(request):
     context = {
         'page' : page,
     }
-
-    # TODO: check with is_authenticated, if True then redirect somewhere if not then redirect login page
 
     if request.method == "POST":
         username = request.POST['username'].lower()
